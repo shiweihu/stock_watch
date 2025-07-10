@@ -21,9 +21,10 @@ export default function RootLayout({
        <head>
         {/* 预加载 TradingView Widget 脚本 */}
         <link
-          rel="preload"
+          rel="prefetch"
           href="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js"
           as="script"
+          crossOrigin='anonymous'
         />
       </head>
        <body>

@@ -151,18 +151,21 @@ export default function MainPage({marketNewsList}:{marketNewsList:NewsItem[]}){
         const reader = response.body?.getReader();
         const decoder = new TextDecoder('utf-8');
 
-        
-        while (true && reader!== undefined) {
-            const { done, value } = await reader.read();
-            if (done) {
-                break
-            }
-            const chunk = decoder.decode(value);
-            setAnalysisText((prev) => prev + chunk)
-            await new Promise((resolve) => setTimeout(resolve, 300));
+        try{
+            while (true && reader!== undefined) {
+                const { done, value } = await reader.read();
+                if (done) {
+                    break
+                }
+                const chunk = decoder.decode(value);
+                setAnalysisText((prev) => prev + chunk)
+                await new Promise((resolve) => setTimeout(resolve, 300));
 
-            // 可选：分段更新 UI
-            console.log('分段:', chunk);
+                // 可选：分段更新 UI
+                console.log('分段:', chunk);
+            }
+        }catch (error) {
+            console.log('Fetch aborted:', error);
         }
     }
 

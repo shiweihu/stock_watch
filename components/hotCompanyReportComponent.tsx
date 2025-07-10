@@ -20,7 +20,7 @@ export function HotCompanyReportComponent({hotCompanyReport}:{hotCompanyReport:A
                 ))}
                 {hotCompanyReport.map((item,index)=>(
                     <Box paddingY={1} width='100%' key={index}>
-                        <AccordianForHotCompenyReportComponent key={index} index={index} report={item} />
+                        <AccordianForHotCompenyReportComponent  index={index} report={item} />
                     </Box>
                 ))}
             </Box>
