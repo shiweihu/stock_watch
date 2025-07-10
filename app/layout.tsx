@@ -16,9 +16,9 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-   return (
-     <html lang="en" className={roboto.variable}>
-       <head>
+  return (
+    <html lang="en" className={roboto.variable}>
+      <head>
         {/* 预加载 TradingView Widget 脚本 */}
         <link
           rel="prefetch"
@@ -27,15 +27,15 @@ export default function RootLayout({
           crossOrigin='anonymous'
         />
       </head>
-       <body>
+      <body>
         <AppRouterCacheProvider>
-          <CssBaseline/>
+          <CssBaseline />
           <ThemeProvider theme={theme}>
-           {children}
+            {children}
           </ThemeProvider>
         </AppRouterCacheProvider>
-       </body>
-     </html>
-   );
-  
+      </body>
+    </html>
+  );
+
 }

@@ -8,12 +8,12 @@ export interface NewsItem {
   source: string;
   summary: string;
   url: string;
-  translated : boolean
+  translated: boolean
 }
 
-export interface HotCompanyReport{
-    symbol:string
-    report:string
-    date:string
-    score:string
+export interface HotCompanyReport {
+  symbol: string
+  report: string
+  date: string
+  score: string
 }

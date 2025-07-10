@@ -3,11 +3,11 @@ import Box from '@mui/material/Box';
 import React, { useEffect, useRef } from 'react';
 
 function loadScript(symbol: string) {
-      const script = document.createElement("script");
-      script.src = "https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js";
-      script.type = "text/javascript";
-      script.async = true;
-      script.innerHTML = `
+  const script = document.createElement("script");
+  script.src = "https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js";
+  script.type = "text/javascript";
+  script.async = true;
+  script.innerHTML = `
         {
           "symbols": [
             [
@@ -49,26 +49,26 @@ function loadScript(symbol: string) {
             "all|1M"
           ]
         }`;
-        return script;
+  return script;
 }
 
-export default function TradingViewWidget({symbol}: {symbol: string}) {
+export default function TradingViewWidget({ symbol }: { symbol: string }) {
   const container = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-      if(container.current === null) return;
-      console.log('TradingViewWidget mounted with symbol:', symbol);
-      container.current.innerHTML = ''; // Clear previous content
-      container.current.appendChild(loadScript(symbol));
-    },[symbol]);
+    if (container.current === null) return;
+    console.log('TradingViewWidget mounted with symbol:', symbol);
+    container.current.innerHTML = ''; // Clear previous content
+    container.current.appendChild(loadScript(symbol));
+  }, [symbol]);
 
   return (
     <Box width="100%" height={500} display='flex' flexDirection='column' >
-        <div className="tradingview-widget-container" ref={container} style={{ width: '100%', height: '100%' }}>
-            <div className="tradingview-widget-container__widget"></div>
-        </div>
-        <div className="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span className="blue-text">Track all markets on TradingView</span></a></div>
+      <div className="tradingview-widget-container" ref={container} style={{ width: '100%', height: '100%' }}>
+        <div className="tradingview-widget-container__widget"></div>
+      </div>
+      <div className="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span className="blue-text">Track all markets on TradingView</span></a></div>
     </Box>
-    
+
   );
 }
